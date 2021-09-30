@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<script>
+
+let result1 = 10 + 10 + "10";
+let result2 = 10 + "10" + 10;
+let result3 = 10 + 10 + +"10"; 
+let result4 = 10 / -"";
+let result5 = 10 / +"2,5";
+console.log(result1)
+console.log(result2)
+console.log(result3)
+console.log(result4)
+console.log(result5)
+
+/*
+result1 = 2010, два целых числа дали сумму 20, строка 10 приклеилась к сумме
+result2 = 101010, числа преобразовались в строки
+result3 = 30, тут у нас унарный плюс, который приводит значение третьего слагаемого к числу
+result4 = -Infinity, фактически деление на -0
+result5 = NaN, попытка унарного плюса приести делитель к числу не удалась по причине запятой
+
+</script>
