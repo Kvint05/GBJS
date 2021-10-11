@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		"use strict";
+
+		class Post {
+		constructor(author, text, date) {
+			this.author = author;
+			this.text = text;
+			this.date = date;
+			}	
+
+		edit(text) {
+			this.text = text;
+			}
+		}
+		const post = new Post('Вася', 'Мне есть, чем платить, но я не хочу', new Date());
+		console.log(post);
+		post.edit('Мне есть, чем платить, но я не хочу победы любой ценой');
+		console.log(post);
+
+		
+		class AttachedPost extends Post{
+			constructor(author, text, date) {
+				super(author, text, date);
+				this.highlighted = false;
+			}
+			
+		makeTextHighlighted() {
+			this.highlighted = true;
+			}
+		}
+
+		const attachedPost = new AttachedPost('Петя', 'Я никому не хочу ставить', new Date());
+		console.log(attachedPost);
+		attachedPost.edit('Я никому не хочу ставить ногу на грудь');
+		console.log(attachedPost);
+		attachedPost.makeTextHighlighted();
+		console.log(attachedPost);
+	</script>
+
+</body>
+</html>

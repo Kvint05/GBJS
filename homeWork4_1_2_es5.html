@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		"use strict";
+
+		function Post(author, text, date) {
+			this.author = author;
+			this.text = text;
+			this.date = date;
+		}	
+		Post.prototype.edit = function(text) {
+			this.text = text;
+		}
+		const post = new Post('Вася', 'Мне есть, чем платить, но я не хочу', new Date());
+		console.log(post);
+		post.edit('Мне есть, чем платить, но я не хочу победы любой ценой');
+		console.log(post);
+
+		function AttachedPost(author, text, date) {
+			Post.call(this, author, text, date);
+			this.highlighted = false;
+		}
+
+		AttachedPost.prototype = Object.create(Post.prototype);
+		AttachedPost.prototype.constructor = AttachedPost;
+		AttachedPost.prototype.makeTextHighlighted = function() {
+			this.highlighted = true;
+		}
+
+		const attachedPost = new AttachedPost('Петя', 'Я никому не хочу ставить', new Date());
+		console.log(attachedPost);
+		attachedPost.edit('Я никому не хочу ставить ногу на грудь');
+		console.log(attachedPost);
+		attachedPost.makeTextHighlighted();
+		console.log(attachedPost);
+	</script>
+
+</body>
+</html>
